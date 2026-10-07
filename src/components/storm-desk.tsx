@@ -259,7 +259,7 @@ function Home({ onOpen }: { onOpen: (tab: Tab) => void }) {
         </article>
         <Metric
           n="2,000"
-          text="sf or more of new plus replaced hard surface, or 7,000 sf or more of land disturbance, requires MR1 through MR5. Below both, new development still owes MR2. A Construction SWPPP is required once either threshold is met."
+          text="sf or more of new plus replaced hard surface, or 7,000 sf or more of land disturbance, requires MR1 through MR5. Below both, only MR1 and MR2."
           href="https://fortress.wa.gov/ecy/ezshare/wq/SWMMs/2024SWMMWW/Content/Topics/Shared/MRsAndCEs/ApplicabilityOfTheMRs_CEs.htm"
           link="I-3.3 thresholds"
         />

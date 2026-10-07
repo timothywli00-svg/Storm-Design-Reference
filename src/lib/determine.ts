@@ -184,7 +184,7 @@ export function determine(i: Inputs): Determination {
     docLabel = "No stormwater submittal from these numbers"
   } else if (band === "mr2" && !i.lakeWhatcom && !(i.specialDistrict && i.newHardSf >= 500)) {
     doc = "swppp"
-    docLabel = "MR2 only — construction SWPPP, not a site plan"
+    docLabel = "MR1 and MR2: short site plan and construction SWPPP"
   } else if (
     (band === "mr1-5" || (i.specialDistrict && band !== "mr1-9")) &&
     (i.landUse === "sfr" || i.landUse === "short") &&
@@ -287,7 +287,7 @@ export function determine(i: Inputs): Determination {
   }
 
   const steps = [
-    { n: "MR1 Site plan", on: band === "mr1-5" || band === "mr1-9", note: doc === "letter" ? "Not the deliverable. A basin exhibit is enough." : "This report is the site plan." },
+    { n: "MR1 Site plan", on: band !== "none", note: band === "mr2" ? "Short site plan only. MR3 through MR5 are not required." : doc === "letter" ? "Not the deliverable. A basin exhibit is enough." : "This report is the site plan." },
     { n: "MR2 SWPPP", on: band !== "none", note: "13 elements. Separate PDF on larger jobs (6042G). On a memo, keep it to the TESC sheet." },
     { n: "MR3 Source control", on: band === "mr1-5" || band === "mr1-9", note: commercial ? "Check Volume IV Appendix IV-A. A house usually has none beyond driveway O&M." : "Single-family: no extra source controls beyond typical O&M." },
     { n: "MR4 Natural drainage", on: band === "mr1-5" || band === "mr1-9", note: "Same discharge point in the post-developed condition. Say where it goes today and where it will go." },
@@ -323,9 +323,9 @@ export function determine(i: Inputs): Determination {
 
 export function labelBand(b: Band): string {
   if (b === "none") return "No minimum requirements"
-  if (b === "mr2") return "MR2 only"
-  if (b === "mr1-5") return "MR1–5"
-  return "MR1–9"
+  if (b === "mr2") return "MR1 and MR2"
+  if (b === "mr1-5") return "MR1-MR5"
+  return "MR1-MR9"
 }
 
 export function fmtSf(n: number): string {
