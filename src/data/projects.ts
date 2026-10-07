@@ -1,4 +1,4 @@
-// Generated from the LDES project index and report library.
+// Generated from the project index and report library.
 export type DocKind =
   | "report"
   | "memo"

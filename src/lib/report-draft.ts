@@ -46,7 +46,7 @@ export function buildDraft(
   if (d.doc !== "none") {
     need(sheet.name, "Project name")
     need(sheet.location, "Site address")
-    need(sheet.ldes, "LDES number")
+    need(sheet.ldes, "Project number")
   }
   if (d.doc === "full" || d.doc === "short" || d.doc === "memo") {
     need(sheet.parcel, "Tax parcel")
@@ -76,7 +76,7 @@ export function buildDraft(
   blocks.push({ kind: "sub", text: blank(sheet.name, "project name") })
   blocks.push({ kind: "sub", text: blank(sheet.location, "project location") })
   blocks.push({ kind: "sub", text: `${sheet.date || "[date]"}` })
-  blocks.push({ kind: "sub", text: `LDES # ${blank(sheet.ldes, "number")}` })
+  blocks.push({ kind: "sub", text: `Project # ${blank(sheet.ldes, "number")}` })
   blocks.push({
     kind: "note",
     text: "Delete this note before the report leaves the office. Brackets are still open. Attach the WWHM2012 printout and have the engineer of record review the call before anyone seals it.",

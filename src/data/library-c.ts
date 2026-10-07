@@ -831,7 +831,7 @@ export const libraryC: Project[] = [
     "ptype": "Single-family home",
     "landuse": "Single-family",
     "system": "Contech StormFilter & Conveyance",
-    "desc": "Lot 15 of the Drayton reach subdivision. LDES did the storm design for the subdivision. Subdivision has designated impervious and PGHS per lot and this project goes over the allotted amounts. A StormFilter is used to treat the additional PGHS. The existing modelling for the Drayton Reach subdivision was updated to show that the increased impervious doesn't cause problems. Otherwise, this project just convey's runoff to the existing system.",
+    "desc": "Lot 15 of the Drayton Reach subdivision. The subdivision storm design allotted impervious and PGHS per lot, and this project goes over those amounts. A StormFilter is used to treat the additional PGHS. The existing modelling for the Drayton Reach subdivision was updated to show that the increased impervious doesn't cause problems. Otherwise, this project just convey's runoff to the existing system.",
     "tda": null,
     "wet": false,
     "hydro": "",

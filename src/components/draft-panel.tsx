@@ -57,7 +57,7 @@ export function DraftPanel({
             These lines land on the cover and in Section 2. The areas on Determine stay as you left them.
           </p>
           <div className="mt-3 grid gap-3">
-            <Field label="LDES number" value={sheet.ldes} onChange={(v) => onChange({ ldes: v })} placeholder="24104" />
+            <Field label="Project number" value={sheet.ldes} onChange={(v) => onChange({ ldes: v })} placeholder="24104" />
             <Field label="Project name" value={sheet.name} onChange={(v) => onChange({ name: v })} placeholder="Hillside Lot 285" />
             <Field label="Site address" value={sheet.location} onChange={(v) => onChange({ location: v })} placeholder="Street, city" />
             <Field label="Tax parcel" value={sheet.parcel} onChange={(v) => onChange({ parcel: v })} placeholder="Parcel number" />
