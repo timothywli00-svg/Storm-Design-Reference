@@ -2,7 +2,7 @@
 
 Stormwater design desk for 7 Cloud Engineering. Sibling of [OSS-Design-Reference](https://github.com/timothywli00-svg/OSS-Design-Reference).
 
-The live site is [storm.7cloudengineering.com](https://storm.7cloudengineering.com). This repo is the source. It is not a second copy of the site, so there is no CNAME here.
+The live site is [storm.7cloudengineering.com](https://storm.7cloudengineering.com). GitHub Pages serves the static build. A push to `main` runs that build.
 
 What it does:
 
