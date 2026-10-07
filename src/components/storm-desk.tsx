@@ -247,7 +247,7 @@ function Home({ onOpen }: { onOpen: (tab: Tab) => void }) {
             The same roof and hard-surface numbers drive the minimum requirements, the downspout trench, and the draft. You do not type the flow into a second calculator.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
-            {["2024 SWMMWW", "MR1\u2013MR9", "Dispersion", "Infiltration"].map((item) => (
+            {["2024 SWMMWW", "MR1-MR9", "Dispersion", "Infiltration"].map((item) => (
               <span key={item} className="rounded-full border border-line bg-pine-soft px-3 py-1 text-sm font-semibold">
                 {item}
               </span>
@@ -257,9 +257,24 @@ function Home({ onOpen }: { onOpen: (tab: Tab) => void }) {
             Open the design sheet
           </button>
         </article>
-        <Metric n="2,000" text="sf of new plus replaced hard surface, or 7,000 sf of disturbance, brings MR1\u20135." href="https://fortress.wa.gov/ecy/ezshare/wq/SWMMs/2024SWMMWW/2024_SWMMWW.htm" />
-        <Metric n="5,000" text="sf of new plus replaced hard surface brings MR1\u20139. The same number of pollution-generating hard surface brings treatment." href="https://fortress.wa.gov/ecy/ezshare/wq/SWMMs/2024SWMMWW/Content/Topics/Shared/RTandFC_BMPs/RoofDownspoutBMPs/BMPt510b.htm" />
-        <Metric n="10,000" text="sf of effective impervious area in the TDA is the usual flow-control trip, unless the receiving water is exempt." href="https://fortress.wa.gov/ecy/ezshare/wq/SWMMs/2024SWMMWW/Content/Topics/Shared/RTandFC_BMPs/DispersionBMPs/BMP_T512W_F641E.htm" />
+        <Metric
+          n="2,000"
+          text="sf or more of new plus replaced hard surface, or 7,000 sf or more of land disturbance, requires MR1 through MR5. Below both, new development still owes MR2. A Construction SWPPP is required once either threshold is met."
+          href="https://fortress.wa.gov/ecy/ezshare/wq/SWMMs/2024SWMMWW/Content/Topics/Shared/MRsAndCEs/ApplicabilityOfTheMRs_CEs.htm"
+          link="I-3.3 thresholds"
+        />
+        <Metric
+          n="5,000"
+          text="sf or more of new plus replaced hard surface requires every minimum requirement, MR1 through MR9. The same full set applies if the project converts 3/4 acre of vegetation to lawn or landscape, or 2.5 acres of native vegetation to pasture."
+          href="https://fortress.wa.gov/ecy/ezshare/wq/SWMMs/2024SWMMWW/Content/Topics/Shared/MRsAndCEs/ApplicabilityOfTheMRs_CEs.htm"
+          link="I-3.3 thresholds"
+        />
+        <Metric
+          n="10,000"
+          text="sf or more of effective impervious surface in a TDA requires flow control under MR7, unless that TDA discharges to a flow-control exempt receiving water."
+          href="https://fortress.wa.gov/ecy/ezshare/wq/SWMMs/2024SWMMWW/Content/Topics/Shared/MRsAndCEs/MR7_CE6.htm"
+          link="MR7 flow control"
+        />
       </div>
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <Topic
@@ -278,20 +293,20 @@ function Home({ onOpen }: { onOpen: (tab: Tab) => void }) {
           kicker="Pipe"
           title="Conveyance, not a pond"
           body="A capacity letter is Manning and the 100-year, 15-minute flow. The pipe card is the full-flow capacity. WWHM still has to supply the flow."
-          checks={["Name the as-built you scaled.", "Use the plat\u2019s impervious cap if it has one.", "One sentence the reviewer can stamp against."]}
+          checks={["Name the as-built you scaled.", "Use the plat’s impervious cap if it has one.", "One sentence the reviewer can stamp against."]}
         />
       </div>
     </section>
   )
 }
 
-function Metric({ n, text, href }: { n: string; text: string; href: string }) {
+function Metric({ n, text, href, link }: { n: string; text: string; href: string; link: string }) {
   return (
     <article className="flex min-h-52 flex-col rounded-card border border-line bg-panel p-5 shadow-sm">
       <p className="text-5xl font-extrabold text-pine">{n}</p>
       <p className="mt-3 text-sm text-muted">{text}</p>
       <a className="mt-auto pt-3 text-sm font-bold" href={href} target="_blank" rel="noreferrer">
-        2024 manual
+        {link}
       </a>
     </article>
   )
@@ -380,7 +395,7 @@ function Form({ inputs, onChange }: { inputs: Inputs; onChange: (p: Partial<Inpu
           <span>
             Site is already developed (redevelopment). Leave off for a vacant or largely undeveloped lot.
             <span className="mt-1 block text-muted">
-              Existing hard surface is {inputs.lotSf > 0 ? `${Math.round((inputs.existingHardSf / inputs.lotSf) * 100)}%` : "\u2014"} of the lot.
+              Existing hard surface is {inputs.lotSf > 0 ? `${Math.round((inputs.existingHardSf / inputs.lotSf) * 100)}%` : "—"} of the lot.
               Your memo uses 35% to name new vs redevelopment. The 2024 manual does not. This checkbox is what the desk uses.
             </span>
           </span>
@@ -425,7 +440,7 @@ function Form({ inputs, onChange }: { inputs: Inputs; onChange: (p: Partial<Inpu
         </div>
         <div className="mt-3 grid gap-2 text-sm">
           <Check label="Lake Whatcom or Sudden Valley (phosphorus)" checked={inputs.lakeWhatcom} onChange={(v) => onChange({ lakeWhatcom: v })} />
-          <Check label="Whatcom special district \u2014 Samish, Padden, Birch Bay, Drayton Harbor" checked={inputs.specialDistrict} onChange={(v) => onChange({ specialDistrict: v })} />
+          <Check label="Whatcom special district — Samish, Padden, Birch Bay, Drayton Harbor" checked={inputs.specialDistrict} onChange={(v) => onChange({ specialDistrict: v })} />
           <Check label="Flow-control exempt receiving water" checked={inputs.flowExempt} onChange={(v) => onChange({ flowExempt: v })} />
           <Check label="High-use site that needs oil control" checked={inputs.oilUse} onChange={(v) => onChange({ oilUse: v })} />
           <Check label="UIC well (drywell or infiltration chamber)" checked={inputs.uic} onChange={(v) => onChange({ uic: v })} />
@@ -554,7 +569,7 @@ function Result({
                 }
               >
                 <span className="font-semibold">#{project.id}</span>
-                <span className="text-muted"> \u00b7 {project.muni}</span>
+                <span className="text-muted"> · {project.muni}</span>
                 <span className="mt-0.5 block">{project.system || project.ptype || "See the file"}</span>
               </button>
             </li>
@@ -610,7 +625,7 @@ function Library({ onUse }: { onUse: (id: string) => void }) {
                 #{p.id} <span className="text-base text-muted">{p.muni}</span>
               </h3>
               <span className="text-xs font-semibold tracking-wide text-muted uppercase">
-                {p.swmm ? `${p.swmm} manual` : "Manual year not logged"} \u00b7 {p.landuse}
+                {p.swmm ? `${p.swmm} manual` : "Manual year not logged"} · {p.landuse}
               </span>
             </div>
             <p className="mt-1 text-sm font-semibold">{p.system || p.ptype || "No system noted on the index"}</p>
@@ -618,7 +633,7 @@ function Library({ onUse }: { onUse: (id: string) => void }) {
             <div className="mt-2 flex flex-wrap gap-1">
               {p.files.map((f) => (
                 <span key={f.name} className="rounded-full bg-paper px-2 py-1 text-xs text-muted">
-                  {f.kind} \u00b7 {f.name}
+                  {f.kind} · {f.name}
                 </span>
               ))}
             </div>
@@ -730,3 +745,4 @@ function Filter({
     </label>
   )
 }
+
