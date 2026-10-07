@@ -184,7 +184,7 @@ export function determine(i: Inputs): Determination {
     docLabel = "No stormwater submittal from these numbers"
   } else if (band === "mr2" && !i.lakeWhatcom && !(i.specialDistrict && i.newHardSf >= 500)) {
     doc = "swppp"
-    docLabel = "MR2 only \u2014 construction SWPPP, not a site plan"
+    docLabel = "MR2 only — construction SWPPP, not a site plan"
   } else if (
     (band === "mr1-5" || (i.specialDistrict && band !== "mr1-9")) &&
     (i.landUse === "sfr" || i.landUse === "short") &&
@@ -219,7 +219,7 @@ export function determine(i: Inputs): Determination {
       title: "Which minimum requirements",
       detail:
         office === "mr1-9" && band !== "mr1-9"
-          ? "Your checklist treats 7,000 sf of land disturbance as full MR1\u20139. The 2024 manual treats 7,000 sf as MR1\u20135 only. Full MR1\u20139 is 5,000 sf of new plus replaced hard surface (new hard surface only, on a redevelopment), or the vegetation conversions. The desk follows the manual."
+          ? "Your checklist treats 7,000 sf of land disturbance as full MR1–9. The 2024 manual treats 7,000 sf as MR1–5 only. Full MR1–9 is 5,000 sf of new plus replaced hard surface (new hard surface only, on a redevelopment), or the vegetation conversions. The desk follows the manual."
           : `Your checklist would call this ${labelBand(office)}. The 2024 project thresholds call it ${labelBand(band)}.`,
     })
   }
@@ -324,8 +324,8 @@ export function determine(i: Inputs): Determination {
 export function labelBand(b: Band): string {
   if (b === "none") return "No minimum requirements"
   if (b === "mr2") return "MR2 only"
-  if (b === "mr1-5") return "MR1\u20135"
-  return "MR1\u20139"
+  if (b === "mr1-5") return "MR1–5"
+  return "MR1–9"
 }
 
 export function fmtSf(n: number): string {
