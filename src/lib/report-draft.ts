@@ -71,7 +71,7 @@ export function buildDraft(
             ? "STORMWATER MEMORANDUM"
             : "STORMWATER SITE PLAN REPORT"
 
-  blocks.push({ kind: "kicker", text: "PRELIMINARY DRAFT \u2014 not for permit submittal" })
+  blocks.push({ kind: "kicker", text: "PRELIMINARY DRAFT — not for permit submittal" })
   blocks.push({ kind: "title", text: title })
   blocks.push({ kind: "sub", text: blank(sheet.name, "project name") })
   blocks.push({ kind: "sub", text: blank(sheet.location, "project location") })
@@ -83,7 +83,7 @@ export function buildDraft(
   })
 
   const ex = example
-    ? `The closest office pattern on file is #${example.id} (${example.muni}${example.system ? ` \u2014 ${example.system}` : ""}). Match that report\u2019s length and exhibits, not this draft\u2019s wording.`
+    ? `The closest office pattern on file is #${example.id} (${example.muni}${example.system ? ` — ${example.system}` : ""}). Match that report’s length and exhibits, not this draft’s wording.`
     : "No library report is pinned. Pick one on the Library tab before you freeze the outline."
 
   if (d.doc === "none") {
@@ -205,13 +205,13 @@ function sitePlan(blocks: Block[], sheet: ProjectSheet, i: Inputs, d: Determinat
   })
   coverParties(blocks, sheet)
 
-  blocks.push({ kind: "h", text: "Section 1 \u2014 Engineer\u2019s declaration" })
+  blocks.push({ kind: "h", text: "Section 1 — Engineer’s declaration" })
   blocks.push({
     kind: "p",
-    text: `I, ${blank(sheet.engineer, "name")}, a professional engineer registered in the State of Washington, declare that the preliminary stormwater report titled \u201c${blank(sheet.name, "project name")}\u201d and dated ${sheet.date || "[date]"} was prepared by me or under my supervision. This copy is a draft. The declaration is not signed and the seal is not affixed.`,
+    text: `I, ${blank(sheet.engineer, "name")}, a professional engineer registered in the State of Washington, declare that the preliminary stormwater report titled “${blank(sheet.name, "project name")}” and dated ${sheet.date || "[date]"} was prepared by me or under my supervision. This copy is a draft. The declaration is not signed and the seal is not affixed.`,
   })
 
-  blocks.push({ kind: "h", text: "Section 2 \u2014 Introduction" })
+  blocks.push({ kind: "h", text: "Section 2 — Introduction" })
   blocks.push({ kind: "h", text: "2.1 Project information" })
   blocks.push({ kind: "meta", label: "Project", value: blank(sheet.name, "project name") })
   blocks.push({ kind: "meta", label: "Location", value: blank(sheet.location, "site address") })
@@ -243,7 +243,7 @@ function sitePlan(blocks: Block[], sheet: ProjectSheet, i: Inputs, d: Determinat
     text: "Continuous simulation in WWHM2012. Predeveloped land cover is forest unless a downstream analysis in the file says otherwise. The printout goes in Appendix D. This draft does not contain modeled flows.",
   })
 
-  blocks.push({ kind: "h", text: "Section 3 \u2014 Existing conditions" })
+  blocks.push({ kind: "h", text: "Section 3 — Existing conditions" })
   blocks.push({ kind: "h", text: "3.1 Land use and zoning" })
   blocks.push({ kind: "p", text: blank(sheet.zoning, "zoning district and what is on the lot today") })
   blocks.push({ kind: "h", text: "3.2 Vegetation" })
@@ -259,7 +259,7 @@ function sitePlan(blocks: Block[], sheet: ProjectSheet, i: Inputs, d: Determinat
     text: blank(sheet.geology, "infiltration rate, seasonal high water, and why infiltration is in or out"),
   })
 
-  blocks.push({ kind: "h", text: "Section 4 \u2014 Stormwater system" })
+  blocks.push({ kind: "h", text: "Section 4 — Stormwater system" })
   blocks.push({ kind: "h", text: "4.1 Basin" })
   blocks.push({
     kind: "p",
@@ -305,7 +305,7 @@ function sitePlan(blocks: Block[], sheet: ProjectSheet, i: Inputs, d: Determinat
     text: "None are requested in this draft. If a standard cannot be met, read the exceptions write-up in the nearest same-city example before you draft one.",
   })
 
-  blocks.push({ kind: "h", text: "Section 5 \u2014 Minimum requirements" })
+  blocks.push({ kind: "h", text: "Section 5 — Minimum requirements" })
   blocks.push({
     kind: "p",
     text: `Per the ${i.manual} manual, the project is ${labelBand(d.band)}. Each item below is either a section to write or a single sentence that the requirement does not apply.`,
@@ -313,7 +313,7 @@ function sitePlan(blocks: Block[], sheet: ProjectSheet, i: Inputs, d: Determinat
   for (const step of d.steps) {
     blocks.push({
       kind: "p",
-      text: `${step.on ? "Applies" : "Does not apply"} \u2014 ${step.n}. ${step.note}`,
+      text: `${step.on ? "Applies" : "Does not apply"} — ${step.n}. ${step.note}`,
     })
   }
 
@@ -321,7 +321,7 @@ function sitePlan(blocks: Block[], sheet: ProjectSheet, i: Inputs, d: Determinat
     blocks.push({ kind: "h", text: "Construction SWPPP" })
     blocks.push({
       kind: "p",
-      text: "The thirteen elements stay in Section 5.2 of the office template. This draft does not copy them. Write each element against this site\u2019s clearing limits, access, and inlets, and point to the TESC sheet. On a large job, put the SWPPP in its own PDF.",
+      text: "The thirteen elements stay in Section 5.2 of the office template. This draft does not copy them. Write each element against this site’s clearing limits, access, and inlets, and point to the TESC sheet. On a large job, put the SWPPP in its own PDF.",
     })
   }
 
@@ -335,7 +335,7 @@ function sitePlan(blocks: Block[], sheet: ProjectSheet, i: Inputs, d: Determinat
 }
 
 function internal(blocks: Block[], d: Determination) {
-  blocks.push({ kind: "h", text: "Office check \u2014 delete before submittal" })
+  blocks.push({ kind: "h", text: "Office check — delete before submittal" })
   for (const c of d.conflicts) {
     blocks.push({ kind: "note", text: `${c.title}. ${c.detail}` })
   }
