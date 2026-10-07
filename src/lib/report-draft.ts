@@ -182,7 +182,7 @@ function plat(blocks: Block[], sheet: ProjectSheet, i: Inputs, d: Determination,
 function swppp(blocks: Block[], sheet: ProjectSheet, i: Inputs, d: Determination) {
   blocks.push({
     kind: "p",
-    text: `The ${LAND[i.landUse]} at ${blank(sheet.location, "site address")}, ${i.jurisdiction}, is under the ${i.manual} project thresholds for a stormwater site plan. New plus replaced hard surface is ${fmtSf(d.newPlusReplaced)} and land disturbance is ${fmtSf(i.disturbSf)}. The submittal is Minimum Requirement 2 only: a construction SWPPP and a TESC sheet. Do not fill Sections 4 and 5 of the office site-plan template.`,
+    text: `The ${LAND[i.landUse]} at ${blank(sheet.location, "site address")}, ${i.jurisdiction}, is under the ${i.manual} thresholds for a stormwater site plan. New plus replaced hard surface is ${fmtSf(d.newPlusReplaced)} and land disturbance is ${fmtSf(i.disturbSf)}. I-3.3 does not require MR1 through MR5, so no stormwater management report is required. I-3.4.2 does not require a Construction SWPPP for review below those thresholds. Consider the 13 SWPPP elements and use the controls that apply. Do not fill the office site-plan template.`,
   })
   blocks.push({
     kind: "p",
