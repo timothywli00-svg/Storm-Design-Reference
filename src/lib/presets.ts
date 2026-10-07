@@ -1,0 +1,118 @@
+import { emptyInputs, type Inputs } from "@/lib/determine"
+
+export type Preset = { id: string; label: string; blurb: string; inputs: Inputs }
+
+function withInputs(patch: Partial<Inputs>): Inputs {
+  return { ...emptyInputs(), ...patch }
+}
+
+export const presets: Preset[] = [
+  {
+    id: "county-house",
+    label: "County house",
+    blurb: "Dispersion, under the treatment and flow-control areas",
+    inputs: withInputs({
+      jurisdiction: "Whatcom County",
+      landUse: "sfr",
+      developedSite: false,
+      lotSf: 20000,
+      newHardSf: 3200,
+      disturbSf: 5000,
+      pghsSf: 700,
+      eiaSf: 3200,
+      infiltration: "no",
+      dispersion: "yes",
+      wetland: "buffer",
+    }),
+  },
+  {
+    id: "ferndale-commercial",
+    label: "Ferndale commercial",
+    blurb: "Full MR1–9, filter plus detention",
+    inputs: withInputs({
+      jurisdiction: "Ferndale",
+      landUse: "commercial",
+      lotSf: 80000,
+      existingHardSf: 0,
+      newHardSf: 28000,
+      disturbSf: 40000,
+      pghsSf: 18000,
+      eiaSf: 16000,
+      infiltration: "no",
+      dispersion: "no",
+      oilUse: false,
+    }),
+  },
+  {
+    id: "sudden-valley",
+    label: "Sudden Valley lot",
+    blurb: "Phosphorus treatment on a small lot",
+    inputs: withInputs({
+      jurisdiction: "Sudden Valley",
+      landUse: "sfr",
+      lotSf: 8000,
+      newHardSf: 2400,
+      disturbSf: 3500,
+      pghsSf: 800,
+      eiaSf: 2400,
+      infiltration: "no",
+      dispersion: "unknown",
+      lakeWhatcom: true,
+    }),
+  },
+  {
+    id: "blaine-capacity",
+    label: "Plat capacity letter",
+    blurb: "Prove the existing pond can take the house",
+    inputs: withInputs({
+      jurisdiction: "Blaine",
+      landUse: "sfr",
+      intent: "capacity",
+      developedSite: true,
+      lotSf: 7000,
+      existingHardSf: 0,
+      newHardSf: 2500,
+      pghsSf: 600,
+      eiaSf: 0,
+      infiltration: "no",
+      dispersion: "no",
+    }),
+  },
+  {
+    id: "over-allowance",
+    label: "Lot over the plat cap",
+    blurb: "Extra driveway beyond what the plat modeled",
+    inputs: withInputs({
+      jurisdiction: "Blaine",
+      landUse: "sfr",
+      intent: "plat",
+      developedSite: true,
+      lotSf: 6000,
+      newHardSf: 1800,
+      pghsSf: 900,
+      eiaSf: 900,
+      infiltration: "no",
+      dispersion: "yes",
+      specialDistrict: true,
+    }),
+  },
+  {
+    id: "redev-disturb",
+    label: "Checklist trap",
+    blurb: "7,000 sf disturbed, little new hard surface",
+    inputs: withInputs({
+      jurisdiction: "Whatcom County",
+      landUse: "commercial",
+      developedSite: true,
+      lotSf: 40000,
+      existingHardSf: 12000,
+      newHardSf: 800,
+      replacedHardSf: 400,
+      disturbSf: 9000,
+      pghsSf: 800,
+      eiaSf: 1200,
+      infiltration: "unknown",
+      dispersion: "unknown",
+    }),
+  },
+]
